@@ -1,0 +1,14 @@
+---
+- name: Update CentOS Servers
+  hosts: servers
+  become: yes
+  tasks:
+    - name: Ensure the package list is updated
+      yum:
+        name: '*'
+        state: latest
+
+    - name: Upgrade all packages to the latest version
+      yum:
+        name: '*'
+        state: latest
