@@ -4,19 +4,7 @@
   become: yes
 
   tasks:
-    - name: Ensure the update script is present
-      copy:
-        content: |
-          #!/bin/bash
-          sudo apt-get update
-          sudo apt-get -y upgrade
-        dest: /tmp/update_script.sh
-        mode: '0755'
-
-    - name: Execute the update script
-      command: /tmp/update_script.sh
-
-    - name: Remove the update script
-      file:
-        path: /tmp/update_script.sh
-        state: absent
+    - name: Update all Debian/Ubuntu packages to their latest version
+      ansible.builtin.apt:
+        name: "*"
+        state: latest
