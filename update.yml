@@ -9,7 +9,8 @@
         name: "*"
         state: latest
 
-    - name: Update and upgrade apt packages
-      become: true
+    - name: Upgrade apt packages
       apt:
         upgrade: yes
+        update_cache: yes
+        cache_valid_time: 86400 
