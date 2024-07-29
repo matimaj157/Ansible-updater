@@ -8,3 +8,8 @@
       ansible.builtin.apt:
         name: "*"
         state: latest
+
+    - name: Update and upgrade apt packages
+      become: true
+      apt:
+        upgrade: yes
